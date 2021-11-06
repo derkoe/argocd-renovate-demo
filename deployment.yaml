@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-webapp
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: node-webapp
+  template:
+    metadata:
+      labels:
+        app: node-webapp
+    spec:
+      containers:
+      - image: ghcr.io/derkoe/node-webapp
+        name: node-webapp
+        ports:
+        - name: http
+          containerPort: 3000
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+        resources:
+          limits:
+            cpu: 200m
+            memory: 100Mi
