@@ -14,7 +14,7 @@ spec:
         app: node-webapp
     spec:
       containers:
-      - image: ghcr.io/derkoe/node-webapp:0.2.0
+      - image: ghcr.io/derkoe/node-webapp:0.3.0
         name: node-webapp
         ports:
         - name: http
